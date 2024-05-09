@@ -1,0 +1,2 @@
+to run the server on the development mode
+-> npm run dev

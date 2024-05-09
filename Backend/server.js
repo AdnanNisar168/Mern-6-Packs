@@ -9,5 +9,5 @@ dotenv.config({path:"backend/config/conig.env"});
 
 //listening server
 app.listen(process.env.PORT, ()=>{
-    Console.log(`server is working on http://localhost:${process.env.PORT}`);
+    // Console.log(`server is working on http://localhost:${process.env.PORT}`);
 })
