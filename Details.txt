@@ -1,0 +1,16 @@
+21 min (Demo)
+
+
+
+
+
+
+----------
+npm init (command )
+
+The npm init command is used to create a Node. js project. The npm init command will create a package where the project files will be stored.
+All the modules you download will be stored in the package.08-Dec-2021
+
+npm i express mongoose dotenv
+
+check package.json for run server command
