@@ -1,0 +1,72 @@
+The error indicates that GitHub no longer supports password-based authentication for pushing to repositories using HTTPS. Instead, GitHub now requires you to use one of the following authentication methods:
+
+1. **Personal Access Token (PAT)**: This is the most common approach for HTTPS.
+2. **SSH Key**: This method allows you to authenticate via SSH instead of HTTPS.
+
+Here’s how you can resolve this issue:
+
+---
+
+### **Solution 1: Use a Personal Access Token (PAT)**
+
+1. **Generate a Personal Access Token:**
+   - Go to your GitHub account: [GitHub Personal Access Token Settings](https://github.com/settings/tokens).
+   - Click **"Generate new token"**.
+   - Select the necessary scopes (e.g., `repo` for repository access).
+   - Click **"Generate token"** and copy the token. _Keep it secure!_
+
+2. **Use the Token Instead of a Password:**
+   - When Git asks for a username and password:
+     - Enter your GitHub username as usual.
+     - Paste the token as the password.
+
+3. **Update Your Remote URL:**
+   If you don't want to be prompted for a username and token every time, you can store the token in your Git remote URL:
+   ```bash
+   git remote set-url origin https://<your_username>:<your_token>@github.com/AdnanNisar168/Mern-6-Packs.git
+   ```
+
+   Replace `<your_username>` with your GitHub username and `<your_token>` with your PAT.
+
+---
+
+### **Solution 2: Use SSH for Authentication**
+
+1. **Generate an SSH Key:**
+   If you haven’t already set up an SSH key, generate one:
+   ```bash
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+
+   Press **Enter** to accept the default location and optionally set a passphrase.
+
+2. **Add the SSH Key to GitHub:**
+   - Copy your public key:
+     ```bash
+     cat ~/.ssh/id_ed25519.pub
+     ```
+   - Go to your GitHub account: [GitHub SSH Settings](https://github.com/settings/keys).
+   - Click **"New SSH key"**, paste the key, and save.
+
+3. **Update Your Remote URL to Use SSH:**
+   Change the remote URL for your repository:
+   ```bash
+   git remote set-url origin git@github.com:AdnanNisar168/Mern-6-Packs.git
+   ```
+
+4. **Test the Connection:**
+   Test the SSH connection to GitHub:
+   ```bash
+   ssh -T git@github.com
+   ```
+
+5. **Push Your Changes:**
+   Push to the repository using SSH:
+   ```bash
+   git push origin main
+   ```
+
+---
+
+### **Recommendation**
+If you’re already using HTTPS, the PAT method is quick and easy to set up. For a more permanent and secure solution, consider switching to SSH authentication.
